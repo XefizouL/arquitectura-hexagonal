@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17
+    container_name: tiendaya-db
+    environment:
+      POSTGRES_DB: tienda_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - tiendaya_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: tiendaya-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@tienda.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+
+volumes:
+  tiendaya_data:
